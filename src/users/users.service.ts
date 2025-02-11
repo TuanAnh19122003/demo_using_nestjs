@@ -5,6 +5,7 @@ import { NotFoundException } from '@nestjs/common';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { RegisterUserDto } from './dto/register.dto';
 
 
 @Injectable()
@@ -28,6 +29,11 @@ export class UsersService {
   async create(createUserDto: CreateUserDto): Promise<User> {
     const newUser = this.userRepository.create(createUserDto);
     return await this.userRepository.save(newUser);
+  }
+  async createUser(data: RegisterUserDto): Promise<User> {
+    const user = new User();
+    Object.assign(user, data);
+    return this.userRepository.save(user);
   }
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User | null> {

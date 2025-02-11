@@ -19,7 +19,7 @@ export const databaseProviders = [
         ],
         synchronize: true,
         logging: false,
-        dropSchema: false,
+        dropSchema: true,
       });
 
       return dataSource.initialize();
