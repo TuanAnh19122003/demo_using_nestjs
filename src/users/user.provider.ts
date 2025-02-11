@@ -1,4 +1,4 @@
-import { User } from 'src/users/entities/user.entity';
+import { User } from 'src/entity/user.entity';
 import { DataSource } from 'typeorm';
 
 export const usersProvider = [
